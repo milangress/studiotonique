@@ -1,0 +1,65 @@
+Title: Info
+
+----
+
+Text1: 
+
+Studio Tonique is a studio for visual communication, founded by Alexander Horn in 2009.
+
+The activities of Studio Tonique include graphic design, publishing, editing, research and curatorial projects. The studio is based in Frankfurt / Main.
+
+Alexander Horn is teaching Typography at the University of Applied Sciences in Darmstadt.
+
+----
+
+Text2: 
+
+Contact
+
+Alexander Horn
+Bäckerweg 50 
+60316 Frankfurt / Main
+Germany
+(email: hello@studiotonique.com text: hello@studiotonique.com)
+
+If you are interested in an internship, 
+please send your CV and portfolio to:
+(email: intern@studiotonique text: intern@studiotonique)
+
+----
+
+Text3: 
+
+Recognition & Awards
+
+
+2014
+German Design Award 2015
+Newcomer Nominee 2015
+
+2011
+Index Book — Selected B
+Graphic Design from Europe
+Diploma Project – A Man is Pumping Water…
+
+2010
+Nominated — Output 13
+Diploma Project – A Man is Pumping Water…
+
+----
+
+Copyright: 
+
+All images, photography, typography, illustration and concepts on these pages, features work by Studio Tonique.
+© 2014 Studio Tonique all rights reserved, including the right of reproduction in whole or in part in any form.
+
+----
+
+Imprint: 
+
+Design
+Studio Tonique, (link: http://www.selftitled.de text: Ingo Lemper)
+
+Development
+(link: http://www.selftitled.de text: Ingo Lemper)
+Made with (link: http://getkirby.com/ text: Kirby) and ♥
