@@ -12,8 +12,8 @@
 
   <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon2">
 
-  <?php echo css('assets/css/style.css') ?>
   <script src="assets/js/font.js"></script>
+  <script src="//f.vimeocdn.com/js/froogaloop2.min.js"></script>
 
   <?php echo 
       "<script>",
@@ -23,6 +23,7 @@
       "</script>"; 
   ?>
 
+  <?php echo css('assets/css/style.css') ?>
   <noscript>
     <style>
       figure { position: relative; }

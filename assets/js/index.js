@@ -2,7 +2,7 @@ var active = document.getElementById('active');
 var content = document.getElementById('content');
 var allVids = content.querySelectorAll('video');
 var allFigs = content.children;
-var embeddedVids = false;
+// var embeddedVids = false;
 
 var a1 = document.getElementById('arrowOne');
 var a2 = document.getElementById('arrowTwo');
@@ -17,13 +17,13 @@ var isAndroid = ua.indexOf("android") > -1;
 
 
 
-function showReplay(target){
-	var replayBtn = target.parentElement.querySelector('.replay');
+function showReplay(target, video){
+	var replayBtn = target.querySelector('.replay');
 	replayBtn.style.display = 'block';
 	// target.currentTime = 0;
 	replayBtn.addEventListener('click', function(){
 		replayBtn.style.display = 'none';
-		target.play();
+		video.api("play");
 	})
 }
 
@@ -53,13 +53,12 @@ function showItem(method){
 
 		if(isVideo(curItem) && !isMobile){ 
 			
-			// var videoItem = getVideoItem(item);
-			// videoItem.seekTo(0);
-			// videoItem.stopVideo();
+			videoItem.api('seekTo', 0);
+			videoItem.api('pause');
 
-			videoItem.pause();
-			videoItem.currentTime > 0 ? videoItem.currentTime = 0 : '';
-			hideReplay(videoItem);
+			// videoItem.pause();
+			// videoItem.currentTime > 0 ? videoItem.currentTime = 0 : '';
+			// hideReplay(videoItem);
 
 		}
 	}
@@ -69,11 +68,9 @@ function showItem(method){
 	curItem.style.display = 'block';
 	curItem.parentElement.style.display = 'block';
 
-	// isVideo(curItem) && window.innerWidth > mobileBreak ? getVideoItem(curItem).playVideo() : '' ;
 	if( isVideo(curItem) && !isMobile ){
-	
-		videoItem.play();
-		videoItem.addEventListener('ended', function(){ showReplay(videoItem); });
+
+		// videoItem.api("play");
 	
 	}else{
 
@@ -92,16 +89,19 @@ function showItem(method){
 function isVideo(target){
 	var isvideo = false;
 	
-	// if(target.children[0]){ 
-	// 	target.children[0].tagName == 'IFRAME' ? isvideo = true : isvideo = false;
-	// } 
+	if(target.children[0]){ 
+		target.children[0].tagName == 'IFRAME' ? isvideo = true : isvideo = false;
 
-	if(target){
-		if(target.children[0] && target.children[0].tagName == 'VIDEO'){
-			isvideo = true;
-			videoItem = target.children[0];
-		}
+		///// get vimeo vimeo item
+		videoItem = $f(target.children[0].id);
 	}
+
+	// if(target){
+	// 	if(target.children[0] && target.children[0].tagName == 'VIDEO'){
+	// 		isvideo = true;
+	// 		videoItem = target.children[0];
+	// 	}
+	// }
 
 	return isvideo;
 }
@@ -128,9 +128,9 @@ if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and 
 
 function handleVisibilityChange() {
   if (document[hidden]) {
-    isVideo(curItem) ? videoItem.pause() : '';
+    isVideo(curItem) ? videoItem.api('pause') : '';
   } else {
-    isVideo(curItem) ? videoItem.play() : '';
+    isVideo(curItem) ? videoItem.api('play') : '';
   }
 }
 
@@ -186,7 +186,7 @@ function preload() {
 
 
 function next(event){
-	if(event.target.tagName == 'IMG' || event.target.tagName == 'VIDEO' || event.target.id == 'arrowTwo'){
+	if(event.target.tagName == 'IMG' || event.target.tagName == 'IFRAME' || event.target.id == 'arrowTwo'){
 		imgid == allItems.length-1 ? imgid = 0 : imgid++;
 		showItem(event);
 	}

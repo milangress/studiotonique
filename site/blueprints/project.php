@@ -14,3 +14,6 @@ fields:
   text:
     label: Text
     type:  textarea
+  video:
+    label: Video
+    type:  text

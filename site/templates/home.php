@@ -29,13 +29,13 @@
 							<img data-src="<?php echo $file->url() ?>" mobile-src="<?php echo $thumb ?>" />	
 							<noscript><img src="<?php echo $file->url() ?>" /></noscript>
 
-						<?php elseif($file->type() == 'video'):
+						<?php //elseif($file->type() == 'video'):
 
-								$namenew = str_replace(".phone", '', $file->name());
+								//$namenew = str_replace(".phone", '', $file->name());
 
-								if(!in_array($namenew, $videonames)) : ?>
+								//if(!in_array($namenew, $videonames)) : ?>
 
-									<div class='video'>
+									<!-- <div class='video'>
 
 										<?php	
 											$videonames[] = $file->name();
@@ -54,15 +54,24 @@
 										?>
 
 									<span class='replay'>&#8634; Replay</span>	
-									</div>
+									</div> -->
 
-								<?php endif ?>
+								<?php //endif ?>
 
 						<?php endif ?>
 
 				<?php endif ?>
 
 		  	<?php endforeach ?>
+
+		  	<?php if(!$project->video()->isEmpty()): ?>
+
+		  		<div class="embed-container">
+		  			<iframe id="<?php echo $project->video() ?>" class="vplayer" src="https://player.vimeo.com/video/<?php echo $project->video() ?>?api=1&amp;player_id=<?php echo $project->video() ?>&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		  			<span class='replay'>&#8634; Replay</span>
+		  		</div>
+
+		  	<?php endif ?>
 
 		  	<figcaption>
 			    <div class='title'>
@@ -82,6 +91,7 @@
 	</div>
 
 </main>
+<script src="assets/js/embedded.js"></script>
 <script>
 
 	var js = document.createElement("script");
