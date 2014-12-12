@@ -29,35 +29,6 @@
 							<img data-src="<?php echo $file->url() ?>" mobile-src="<?php echo $thumb ?>" />	
 							<noscript><img src="<?php echo $file->url() ?>" /></noscript>
 
-						<?php //elseif($file->type() == 'video'):
-
-								//$namenew = str_replace(".phone", '', $file->name());
-
-								//if(!in_array($namenew, $videonames)) : ?>
-
-									<!-- <div class='video'>
-
-										<?php	
-											$videonames[] = $file->name();
-
-											$videos = array(
-											 	$project->videos()->find($file->name().'.mp4'),
-											 	$project->videos()->find($file->name().'.ogv'),
-											 	$project->videos()->find($file->name().'.phone.mp4')
-											);
-
-											snippet('video', array(
-											  'videos' => $videos,
-											  'controls' => false,
-											  'preload' => true,
-											));
-										?>
-
-									<span class='replay'>&#8634; Replay</span>	
-									</div> -->
-
-								<?php //endif ?>
-
 						<?php endif ?>
 
 				<?php endif ?>
