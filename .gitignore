@@ -1,6 +1,9 @@
 .DS_Store
 .htaccess
 content/projects
+site/config
+site/accounts
 thumbs
 panel
 kirby
+home_html5video.php

@@ -13,4 +13,3 @@ history:
   - projects/a-u-r-a
   - info
   - home
-token: e7213b9e0c60ccbca9c5cab362c35867dee02437
