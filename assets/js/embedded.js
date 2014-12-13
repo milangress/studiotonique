@@ -19,6 +19,7 @@ function onPlayerReady( data ) {
 
 	var froogaloop = $f(data);
 	
-	called++;
-	called == YTplayer.length ? showItem('random') : '';
+	// called++;
+	// called == YTplayer.length ? showItem('random') : '';
+	
 }

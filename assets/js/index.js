@@ -6,10 +6,9 @@ var allFigs = content.children;
 
 var a1 = document.getElementById('arrowOne');
 var a2 = document.getElementById('arrowTwo');
-var curItem, item, videoItem, param;
+var curItem, item, videoItem, param, lastIndex;
 var allItems = [];
 var imgid = 0;
-var lastIndex = 0;
 
 var ua = navigator.userAgent.toLowerCase();
 var isMobile = window.innerWidth < 767;
@@ -41,10 +40,9 @@ function jumpToProject(name){
 	}
 }
 
+function showItem( event ){
 
-function showItem(method){
-
-	method == 'random' ? imgid = Math.floor(Math.random() * allItems.length) : imgid = imgid ;
+	event == 'random' ? imgid = Math.floor(Math.random() * allItems.length) : imgid = imgid ;
 	var nextItem = allItems[imgid]; 
 
 	if( curItem ){
@@ -71,6 +69,7 @@ function showItem(method){
 	if( isVideo(curItem) && !isMobile ){
 
 		// videoItem.api("play");
+		loadImage(allItems[imgid+1]);
 	
 	}else{
 
@@ -129,8 +128,6 @@ if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and 
 function handleVisibilityChange() {
   if (document[hidden]) {
     isVideo(curItem) ? videoItem.api('pause') : '';
-  } else {
-    isVideo(curItem) ? videoItem.api('play') : '';
   }
 }
 
@@ -170,6 +167,7 @@ function preload() {
 	var index = imgid;
 	var lastPos = allItems.length - 1;
 	var next =
+		!lastIndex ? next = true :
 		!(index == lastPos && lastIndex == 0)
 		&& (index > lastIndex)
 		|| (index == 0 && lastIndex == lastPos);
@@ -261,15 +259,18 @@ function addEventListeners(){
 function init(){
 
 	fillArray();
-	embeddedVids ? initVideos() : showItem('random');
+	
+	console.log("param: "+param);
+	param ? jumpToProject(param) : showItem('random') ;
 
-	preloadFirstImages();
+	embeddedVids ? initVideos() : '' ;
+
+	//preloadFirstImages();
+	loadImage(allItems[imgid-1]);
 	setMaxWidth();
 	enableArrows();
 
 	addEventListeners();
-
-	param ? jumpToProject(param) : '' ;
 }
 
 init();
