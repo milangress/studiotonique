@@ -65,19 +65,12 @@
 <script src="assets/js/embedded.js"></script>
 
 <?php
-	
-    session_start();
 
-	//The second parameter on print_r returns the result to a variable rather than displaying it
-	$RequestSignature = md5($_SERVER['REQUEST_URI'].$_SERVER['QUERY_STRING'].print_r($_POST, true));
+	session_start();
+	$id = session_id();
 
-	if ($_SESSION['LastRequest'] == $RequestSignature)
-	{
-
-	}
-	else
-	{
-	  $_SESSION['LastRequest'] = $RequestSignature;
+	if ($_SESSION['LastRequest'] != $id){
+	  $_SESSION['LastRequest'] = $id;
 	  if ( sizeof(param()) != 0 ){
 	 	  $output = "<script>param = '". param('project') . "';</script>";
 	 	  echo $output;
