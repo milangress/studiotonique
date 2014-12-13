@@ -63,6 +63,29 @@
 
 </main>
 <script src="assets/js/embedded.js"></script>
+
+<?php
+	
+    session_start();
+
+	//The second parameter on print_r returns the result to a variable rather than displaying it
+	$RequestSignature = md5($_SERVER['REQUEST_URI'].$_SERVER['QUERY_STRING'].print_r($_POST, true));
+
+	if ($_SESSION['LastRequest'] == $RequestSignature)
+	{
+
+	}
+	else
+	{
+	  $_SESSION['LastRequest'] = $RequestSignature;
+	  if ( sizeof(param()) != 0 ){
+	 	  $output = "<script>param = '". param('project') . "';</script>";
+	 	  echo $output;
+		}
+	}
+
+?>
+
 <script>
 
 	var js = document.createElement("script");
@@ -74,16 +97,4 @@
 
 </script>
 
-<?php
-	$pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
-
-	if($pageWasRefreshed ) {
-	  //do something because page was refreshed;
-	} else {
-		if ( sizeof(param()) != 0 ){
-	 	  $output = "<script>var param = '". param('project') . "';</script>";
-	 	  echo $output;
-		}
-	}
-?>
 <?php snippet('footer') ?>
