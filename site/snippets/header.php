@@ -12,18 +12,18 @@
 
   <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon2">
 
-  <script src="assets/js/font.js"></script>
+  <!--<script src="assets/js/font.js"></script>-->
   <script src="//f.vimeocdn.com/js/froogaloop2.min.js"></script>
 
   <?php echo 
       "<script>",
         "var _subfolder = '/". c::get(subfolder) . "';", 
         "_subfolder != '/' ? _subfolder = _subfolder : _subfolder = '' ;",
-        "loadFont();",
       "</script>"; 
   ?>
 
   <?php echo css('assets/css/style.css') ?>
+
   <noscript>
     <style>
       figure { position: relative; }

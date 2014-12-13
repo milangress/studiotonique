@@ -6,7 +6,7 @@ var allFigs = content.children;
 
 var a1 = document.getElementById('arrowOne');
 var a2 = document.getElementById('arrowTwo');
-var curItem, item, videoItem;
+var curItem, item, videoItem, param;
 var allItems = [];
 var imgid = 0;
 var lastIndex = 0;
