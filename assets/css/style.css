@@ -193,6 +193,7 @@ figcaption .data p {
 	-moz-box-sizing:border-box;
 }
 #info, #imprint{
+	margin-top: -.8em;
 	padding:0; 
 	max-width:100%; 
 	display:table; 
