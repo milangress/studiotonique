@@ -184,7 +184,7 @@ function preload() {
 
 
 function next(event){
-	if(event.target.tagName == 'IMG' || event.target.tagName == 'IFRAME' || event.target.id == 'arrowTwo'){
+	if(event.target.tagName == 'IMG' || event.target.tagName == 'IFRAME' || event.target.id == 'arrowTwo' || event.type == 'keydown'){
 		imgid == allItems.length-1 ? imgid = 0 : imgid++;
 		showItem(event);
 	}
@@ -233,6 +233,16 @@ function enableArrows(){
 
 	a2.addEventListener('click', next);
 	a1.addEventListener('click', prev);
+
+	document.onkeydown = function( e ){
+
+		if( e.keyCode == 39 ){
+			next(e);
+		}else if( e.keyCode == 37 ){
+			prev(e);
+		}
+
+	}
 
 }
 
