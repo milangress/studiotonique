@@ -68,7 +68,9 @@ function showItem( event ){
 
 	if( isVideo(curItem) && !isMobile ){
 
-		// videoItem.api("play");
+		videoItem.api("play");
+		videoItem.api('setVolume', 0);
+
 		loadImage(allItems[imgid+1]);
 	
 	}else{
