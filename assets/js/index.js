@@ -16,20 +16,20 @@ var isAndroid = ua.indexOf("android") > -1;
 
 
 
-function showReplay(target, video){
-	var replayBtn = target.querySelector('.replay');
-	replayBtn.style.display = 'block';
-	// target.currentTime = 0;
-	replayBtn.addEventListener('click', function(){
-		replayBtn.style.display = 'none';
-		video.api("play");
-	})
-}
+// function showReplay(target, video){
+// 	var replayBtn = target.querySelector('.replay');
+// 	replayBtn.style.display = 'block';
+// 	// target.currentTime = 0;
+// 	replayBtn.addEventListener('click', function(){
+// 		replayBtn.style.display = 'none';
+// 		video.api("play");
+// 	})
+// }
 
-function hideReplay(target){
-	var replayBtn = target.parentElement.querySelector('.replay');
-	replayBtn.style.display = 'none';
-}
+// function hideReplay(target){
+// 	var replayBtn = target.parentElement.querySelector('.replay');
+// 	replayBtn.style.display = 'none';
+// }
 
 function jumpToProject(name){
 	var projectFigure = document.getElementById(name);
@@ -68,8 +68,8 @@ function showItem( event ){
 
 	if( isVideo(curItem) && !isMobile ){
 
-		videoItem.api("play");
-		videoItem.api('setVolume', 0);
+		// videoItem.api("play");
+		// videoItem.api('setVolume', 0);
 
 		loadImage(allItems[imgid+1]);
 	
@@ -90,11 +90,11 @@ function showItem( event ){
 function isVideo(target){
 	var isvideo = false;
 	
-	if(target.children[0]){ 
-		target.children[0].tagName == 'IFRAME' ? isvideo = true : isvideo = false;
-
+	if(target.getElementsByTagName('IFRAME').length){ 
+		// target.children[0].tagName == 'IFRAME' ? isvideo = true : isvideo = false;
+		isvideo = true
 		///// get vimeo vimeo item
-		videoItem = $f(target.children[0].id);
+		videoItem = $f(target.getElementsByTagName('IFRAME')[0].id);
 	}
 
 	// if(target){
@@ -146,8 +146,12 @@ function setMaxWidth(){
 ///// LOADER
 
 
-function loadImage(img) {
+function loadImage( container ) {
+
 	try {
+		
+		var img = container.getElementsByTagName('IMG')[0];
+
 		if(!isVideo(img) && !img.src){
 			var src = isMobile ? img.getAttribute('mobile-src') : img.getAttribute('data-src');
 			img.classList.add('loading');
@@ -159,9 +163,13 @@ function loadImage(img) {
 				img.classList.remove('loading');
 			};
 		}
+
 	}catch (e){
+		
 		console.log('invalid item');
+	
 	}
+
 }
 
 

@@ -29,7 +29,7 @@
       figure { position: relative; }
       figure:first-child figcaption { top: 55px; }
       figcaption { top: 0; }
-      .arrow {display: none; }
+      .arrow { display: none; }
     </style>
   </noscript>
 

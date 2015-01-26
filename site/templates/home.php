@@ -10,15 +10,22 @@
   	<div id='content'>
   		<?php 
   			$videonames = array();
-  			$index = 0;
 			
-			foreach($site->find('projects')->children()->visible() as $project):
-	    		$index++;
-	    ?>
+			foreach($site->find('projects')->children()->visible() as $project): 
+			$index = 0;
+			?>
 
 	    	<figure id="<?php echo html($project->uid()) ?>">
 
-			<?php foreach($project->files() as $file): ?>
+			<?php foreach($project->files() as $file): 
+				$index++;
+				if(!$project->video()->isEmpty()){
+					$count = $project->files()->count()+1;
+				}else{
+					$count = $project->files()->count();
+				}
+				
+			?>
 
 				<?php if(!in_array($file->name(), $videonames)) : ?>
 					  	
@@ -26,8 +33,11 @@
 
 					  		<?php $thumb = thumb($file, array('width' => 767, 'retina' => true, 'quality' => 90), false); ?>
 
-							<img data-src="<?php echo $file->url() ?>" mobile-src="<?php echo $thumb ?>" />	
-							<noscript><img src="<?php echo $file->url() ?>" /></noscript>
+					  		<div class="img">		
+								<img data-src="<?php echo $file->url() ?>" mobile-src="<?php echo $thumb ?>" />
+								<noscript><img src="<?php echo $file->url() ?>" /></noscript>
+								<div class="index"><?php echo $index ?>&thinsp;/&thinsp;<?php echo $count ?></div>
+							</div>
 
 						<?php endif ?>
 
@@ -39,7 +49,8 @@
 
 		  		<div class="embed-container">
 		  			<iframe id="<?php echo $project->video() ?>" class="vplayer" src="https://player.vimeo.com/video/<?php echo $project->video() ?>?api=1&amp;player_id=<?php echo $project->video() ?>&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-		  			<span class='replay'>&#8634; Replay</span>
+		  			<!-- <span class='replay'>&#8634; Replay</span> -->
+		  			<div class="index"><?php echo $count ?>&thinsp;/&thinsp;<?php echo $count ?></div>
 		  		</div>
 
 		  	<?php endif ?>
