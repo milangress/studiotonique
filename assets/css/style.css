@@ -202,14 +202,14 @@ figcaption .data p {
 /* Embed Video */
 
 #content figure iframe{
-	width: 100%;
-	height: 90% !important;
+	width: 88%;
+	height: 88% !important;
 }
 
 .embed-container .index{
 	position: absolute;
 	bottom: -4px;
-	height: 10%;
+	height: 12%;
 }
 
 .embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto; } 
