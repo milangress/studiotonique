@@ -29,6 +29,6 @@ of the system, please check out http://getkirby.com/docs/advanced/options
 
 */
 
-c::set('url', 'localhost:8000');
+c::set('url', 'localhost:8888');
 
-c::set('subfolder', false);
+c::set('subfolder', 'studiotonique');
